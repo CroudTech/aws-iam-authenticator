@@ -16,34 +16,29 @@ builds:
       - "-s -w -X main.version={{.Version}} -X main.commit={{.Commit}}"
 
 dockers:
-  - image: croudtech/aws-iam-authenticator
-    binary: aws-iam-authenticator
+  - binary: aws-iam-authenticator
     dockerfile: Dockerfile.scratch
-    tag_templates:
-     - "{{ .Tag }}-scratch"
-     - "{{ .Tag }}"
-  - image: croudtech/aws-iam-authenticator
-    binary: aws-iam-authenticator
+    image_templates:
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-scratch"
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}"
+  - binary: aws-iam-authenticator
     dockerfile: Dockerfile.alpine-3.6
-    tag_templates:
-     - "{{ .Tag }}-alpine-3.6"
-  - image: croudtech/aws-iam-authenticator
-    binary: aws-iam-authenticator
+    image_templates:
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-alpine-3.6"
+  - binary: aws-iam-authenticator
     dockerfile: Dockerfile.alpine-3.7
-    tag_templates:
-     - "{{ .Tag }}-alpine-3.7"
-     - "{{ .Tag }}-alpine"
-  - image: croudtech/aws-iam-authenticator
-    binary: aws-iam-authenticator
+    image_templates:
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-alpine-3.7"
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-alpine"
+  - binary: aws-iam-authenticator
     dockerfile: Dockerfile.debian-jessie
-    tag_templates:
-     - "{{ .Tag }}-debian-jessie"
-  - image: croudtech/aws-iam-authenticator
-    binary: aws-iam-authenticator
+    image_templates:
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-debian-jessie"
+  - binary: aws-iam-authenticator
     dockerfile: Dockerfile.debian-stretch
-    tag_templates:
-     - "{{ .Tag }}-debian-stretch"
-     - "{{ .Tag }}-debian"
+    image_templates:
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-debian-stretch"
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-debian"
 
 snapshot:
   name_template: "git-{{.ShortCommit}}"

@@ -44,6 +44,12 @@ dockers:
     image_templates:
      - "croudtech/aws-iam-authenticator:{{ .Tag }}-debian-stretch"
      - "croudtech/aws-iam-authenticator:{{ .Tag }}-debian"
+  - binaries:
+     - aws-iam-authenticator
+    dockerfile: Dockerfile.amazonlinux-2
+    image_templates:
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-amazonlinux-2"
+     - "croudtech/aws-iam-authenticator:{{ .Tag }}-amazonlinux"
 
 snapshot:
   name_template: "git-{{.ShortCommit}}"
